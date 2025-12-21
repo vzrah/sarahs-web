@@ -137,12 +137,11 @@
       .btn {
         background: linear-gradient(
           to right,
-          var(--pastel-blue),
-          var(--pastel-purple)
+          var(--pastel-pink),
+          var(--pastel-blue)
         );
         color: white;
         border: none;
-        padding: 0.9rem 2rem;
         border-radius: 8px;
         font-family: 'Sour Gummy', sans-serif;
         font-size: 1.2rem;
@@ -152,6 +151,25 @@
           box-shadow 0.3s;
         display: inline-block;
         text-decoration: none;
+        height: 50px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.322);
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+      }
+
+      .about-me h3 {
+        margin-top: 15px;
+        margin-bottom: 0px;
+      }
+
+      .about-me li {
+        margin-left: 20px;
       }
 
       .intro-text p {
@@ -169,7 +187,15 @@
       }
 
       .games-showcase h2 {
-        color: #b8860b;
+        background: linear-gradient(
+          135deg,
+          var(--pastel-pink),
+          var(--pastel-blue)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.2rem;
+        line-height: 1.1;
         font-size: 2.5rem;
         text-align: center;
         margin-bottom: 2rem;
@@ -185,13 +211,12 @@
         background-color: var(--light-gray);
         border-radius: 12px;
         overflow: hidden;
-        transition: transform 0.3s;
+        transition: transform 0.5s;
         border: 3px solid transparent;
       }
 
       .game-card:hover {
         transform: translateY(-8px);
-        border-color: var(--pastel-blue);
       }
 
       .game-img {
@@ -228,6 +253,14 @@
         font-size: 0.9rem;
       }
 
+      .game1 {
+        margin-top: 42px;
+      }
+
+      .game3 {
+        margin-top: 66px;
+      }
+
       /* Footer */
       footer {
         background: linear-gradient(
@@ -238,8 +271,7 @@
         padding: 2rem 0;
         text-align: center;
         margin-top: 3rem;
-       box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
-        
+        box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
       }
 
       .social-links {
@@ -323,13 +355,15 @@
             work.
           </p>
 
-          <h3>Skills & Expertise</h3>
+          <h3>skills & expertise</h3>
           <ul>
-            <li>Game Development (Unity, Unreal Engine, Godot)</li>
-            <li>2D/3D Art & Animation</li>
-            <li>UI/UX Design for Games</li>
-            <li>Arsenal</li>
-            <li>Programming (HTML, CSS, JavaScript)</li>
+            <li>math (accelerated)</li>
+            <li>
+              advice giving or whatever u call it (guys i know how to be srs)
+            </li>
+            <li>obbies + aiming</li>
+            <li>upper mid in arsenal & vbl</li>
+            <li>programming (HTML, CSS, JavaScript)</li>
           </ul>
 
           <a href="#links" class="btn" style="margin-top: 1.5rem"
@@ -339,26 +373,26 @@
       </div>
 
       <section class="games-showcase">
-        <h2>Games I Play & Create</h2>
+        <h2>games i play from roblox</h2>
         <div class="games-grid">
           <!-- Game 1 -->
           <div class="game-card">
             <img
-              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-              alt="Fantasy RPG Game"
+              src="https://tr.rbxcdn.com/180DAY-fe3fe230c53efe23cf964c5e019fe150/768/432/Image/Webp/noFilter"
+              alt="Volleyball Legends"
               class="game-img"
             />
             <div class="game-info">
-              <h3>Chronicles of Elyria</h3>
+              <h3>Volleyball Legends</h3>
               <p>
-                An open-world fantasy RPG I'm currently developing. Features
-                dynamic storytelling and a living world that changes based on
-                player decisions.
+                Volleyball Legends is a competitive volleyball game focused on
+                skill, teamwork, and fast-paced matches. It appeals to players
+                who enjoy coordinated multiplayer gameplay.
               </p>
-              <div class="game-tags">
-                <span class="tag">RPG</span>
-                <span class="tag">Fantasy</span>
-                <span class="tag">Open World</span>
+              <div class="game-tags game1">
+                <span class="tag">Sports</span>
+                <span class="tag">Competitive</span>
+                <span class="tag">Multiplayer</span>
               </div>
             </div>
           </div>
@@ -366,21 +400,22 @@
           <!-- Game 2 -->
           <div class="game-card">
             <img
-              src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80"
-              alt="Cyberpunk Game"
+              src="https://tr.rbxcdn.com/180DAY-6bb1a9706475489833d58dc1a21d1c69/768/432/Image/Webp/noFilter"
+              alt="Arsenal"
               class="game-img"
             />
             <div class="game-info">
-              <h3>Neon Nexus</h3>
+              <h3>Arsenal</h3>
               <p>
-                A cyberpunk puzzle-platformer with neon aesthetics and time
-                manipulation mechanics. Won "Best Art Direction" at Indie Game
-                Fest 2023.
+                Arsenal is a fast-paced FPS featuring quick rounds and
+                constantly changing weapons. It has received recognition within
+                the Roblox community and has won awards for its popularity and
+                gameplay.
               </p>
-              <div class="game-tags">
-                <span class="tag">Platformer</span>
-                <span class="tag">Cyberpunk</span>
-                <span class="tag">Puzzle</span>
+              <div class="game-tags game2">
+                <span class="tag">FPS</span>
+                <span class="tag">Action</span>
+                <span class="tag">Competitive</span>
               </div>
             </div>
           </div>
@@ -388,20 +423,20 @@
           <!-- Game 3 -->
           <div class="game-card">
             <img
-              src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-              alt="Space Exploration Game"
+              src="https://assetsio.gnwcdn.com/midnight-chasers-0.webp?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp"
+              alt="Midnight Chasers"
               class="game-img"
             />
             <div class="game-info">
-              <h3>Stellar Drifters</h3>
+              <h3>Midnight Chasers</h3>
               <p>
-                A space exploration and survival game where you build and
-                customize your spacecraft while discovering alien civilizations.
+                Midnight Chasers is an open-world racing game centred around
+                high-speed driving, racing events, and vehicle customisation.
               </p>
-              <div class="game-tags">
-                <span class="tag">Exploration</span>
-                <span class="tag">Survival</span>
-                <span class="tag">Space</span>
+              <div class="game-tags game3">
+                <span class="tag">Racing</span>
+                <span class="tag">Action</span>
+                <span class="tag">Multiplayer</span>
               </div>
             </div>
           </div>
@@ -412,42 +447,26 @@
     <footer>
       <div class="container">
         <div class="social-links" id="links">
-          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.tiktok.com/@xvrahh" class="social-icon"
+            ><i class="fab fa-tiktok"></i
+          ></a>
           <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
           <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
           <a href="#" class="social-icon"><i class="fab fa-artstation"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+          <a
+            href="https://discordapp.com/users/1054231115528933467"
+            class="social-icon"
+            ><i class="fab fa-discord"></i
+          ></a>
         </div>
-        <p class="copyright">&copy; 2023 Alex Morgan. All rights reserved.</p>
+        <p class="copyright">&copy; 2025 xvrah. All rights reserved.</p>
         <p class="copyright">
-          This website is a showcase of my work and interests.
+          This website is an introduction on myself and my interests.
         </p>
       </div>
     </footer>
 
     <script>
-      // Form submission handler
-      document
-        .getElementById('contactForm')
-        .addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          // Get form values
-          const name = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
-          const subject = document.getElementById('subject').value;
-          const message = document.getElementById('message').value;
-
-          // In a real implementation, you would send this data to a server
-          // For this example, we'll just show an alert
-          alert(
-            `Thank you, ${name}! Your message has been received. I'll get back to you at ${email} soon.`
-          );
-
-          // Reset the form
-          document.getElementById('contactForm').reset();
-        });
-
       // Add hover effect to game cards
       const gameCards = document.querySelectorAll('.game-card');
       gameCards.forEach((card) => {
