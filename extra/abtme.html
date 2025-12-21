@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+      :root {
+        --pastel-pink: #ffd6e0;
+        --pastel-blue: #c1e1ff;
+        --pastel-green: #c6ffc1;
+        --pastel-purple: #e0c1ff;
+        --pastel-yellow: #fff5c1;
+        --light-gray: #f8f9fa;
+        --text-dark: #333;
+        --text-medium: #555;
+        --border-color: rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Fredoka', sans-serif;
+        color: var(--text-dark);
+        background-color: var(--light-gray);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: 'Sour Gummy', sans-serif;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--pastel-pink),
+          var(--pastel-blue)
+        );
+        padding: 2rem 0;
+        text-align: center;
+        /*  border-bottom: 5px solid var(--pastel-purple); */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.356);
+      }
+
+      .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid white;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .intro-text h1 {
+        font-size: 3rem;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .intro-text p {
+        font-size: 1.3rem;
+        color: var(--text-medium);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Main Content */
+      main {
+        padding: 3rem 0;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* About Me Section */
+      .about-me {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        border-left: 8px solid var(--pastel-pink);
+      }
+
+      p {
+        margin-top: 10px;
+      }
+
+      .about-me h2 {
+        background: linear-gradient(
+          135deg,
+          var(--pastel-pink),
+          var(--pastel-blue)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.2rem;
+        line-height: 1.1;
+      }
+
+      .btn {
+        background: linear-gradient(
+          to right,
+          var(--pastel-blue),
+          var(--pastel-purple)
+        );
+        color: white;
+        border: none;
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        font-family: 'Sour Gummy', sans-serif;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .intro-text p {
+        margin-top: 0px;
+      }
+
+      /* Games Showcase */
+      .games-showcase {
+        margin-top: 3rem;
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        border-left: 8px solid var(--pastel-yellow);
+      }
+
+      .games-showcase h2 {
+        color: #b8860b;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .game-card {
+        background-color: var(--light-gray);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s;
+        border: 3px solid transparent;
+      }
+
+      .game-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--pastel-blue);
+      }
+
+      .game-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .game-info {
+        padding: 1.5rem;
+      }
+
+      .game-info h3 {
+        color: var(--text-dark);
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .game-info p {
+        color: var(--text-medium);
+        margin-bottom: 1rem;
+      }
+
+      .game-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tag {
+        background-color: var(--pastel-green);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(
+          135deg,
+          var(--pastel-blue),
+          var(--pastel-pink)
+        );
+        padding: 2rem 0;
+        text-align: center;
+        margin-top: 3rem;
+       box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+        
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 50%;
+        color: #555;
+        font-size: 1.5rem;
+        transition:
+          transform 0.3s,
+          background-color 0.3s;
+        text-decoration: none;
+      }
+
+      .social-icon:hover {
+        transform: scale(1.1);
+        background-color: var(--pastel-yellow);
+      }
+
+      .copyright {
+        color: var(--text-medium);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="profile-section">
+          <!-- Replace with your own image or placeholder -->
+          <img
+            src="https://vzrah.carrd.co/assets/images/image01.jpg?v=6e2dd359   "
+            alt="Profile Picture"
+            class="profile-img"
+          />
+          <div class="intro-text">
+            <h1>sarah (@vzrah)</h1>
+            <p>your average gamer with very good academics</p>
+            <p>will 100% slime you in roblox</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="content-grid">
+        <section class="about-me">
+          <h2>everthing you need to know about me</h2>
+          <p>
+            hi, my name is sarah and i live in sydney, australia. i’d say my
+            personality is pretty chill. i’m friendly, a little sarcastic, and i
+            warm up once i’m comfortable. i like doing my own thing and working
+            on stuff i’m actually interested in, especially creative or tech
+            related projects.
+          </p>
+
+          <p>
+            one of my main hobbies is gaming. i mostly play roblox and i’m
+            genuinely cracked at games like volleyball legends and arsenal. i
+            really enjoy fps games because they’re fast paced and competitive,
+            and i like improving my aim and reaction time. gaming is something i
+            use to relax, but i also like being good at what i play.
+          </p>
+
+          <p>
+            when i’m not gaming, i’m usually procrastinating, listening to
+            music, or working on random creative or tech projects. i like
+            learning by experimenting instead of being told exactly what to do,
+            and i enjoy projects where i can make things look good and actually
+            work.
+          </p>
+
+          <h3>Skills & Expertise</h3>
+          <ul>
+            <li>Game Development (Unity, Unreal Engine, Godot)</li>
+            <li>2D/3D Art & Animation</li>
+            <li>UI/UX Design for Games</li>
+            <li>Arsenal</li>
+            <li>Programming (HTML, CSS, JavaScript)</li>
+          </ul>
+
+          <a href="#links" class="btn" style="margin-top: 1.5rem"
+            >Get In Touch</a
+          >
+        </section>
+      </div>
+
+      <section class="games-showcase">
+        <h2>Games I Play & Create</h2>
+        <div class="games-grid">
+          <!-- Game 1 -->
+          <div class="game-card">
+            <img
+              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+              alt="Fantasy RPG Game"
+              class="game-img"
+            />
+            <div class="game-info">
+              <h3>Chronicles of Elyria</h3>
+              <p>
+                An open-world fantasy RPG I'm currently developing. Features
+                dynamic storytelling and a living world that changes based on
+                player decisions.
+              </p>
+              <div class="game-tags">
+                <span class="tag">RPG</span>
+                <span class="tag">Fantasy</span>
+                <span class="tag">Open World</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div class="game-card">
+            <img
+              src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80"
+              alt="Cyberpunk Game"
+              class="game-img"
+            />
+            <div class="game-info">
+              <h3>Neon Nexus</h3>
+              <p>
+                A cyberpunk puzzle-platformer with neon aesthetics and time
+                manipulation mechanics. Won "Best Art Direction" at Indie Game
+                Fest 2023.
+              </p>
+              <div class="game-tags">
+                <span class="tag">Platformer</span>
+                <span class="tag">Cyberpunk</span>
+                <span class="tag">Puzzle</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div class="game-card">
+            <img
+              src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+              alt="Space Exploration Game"
+              class="game-img"
+            />
+            <div class="game-info">
+              <h3>Stellar Drifters</h3>
+              <p>
+                A space exploration and survival game where you build and
+                customize your spacecraft while discovering alien civilizations.
+              </p>
+              <div class="game-tags">
+                <span class="tag">Exploration</span>
+                <span class="tag">Survival</span>
+                <span class="tag">Space</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="social-links" id="links">
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-artstation"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copyright">&copy; 2023 Alex Morgan. All rights reserved.</p>
+        <p class="copyright">
+          This website is a showcase of my work and interests.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Form submission handler
+      document
+        .getElementById('contactForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const subject = document.getElementById('subject').value;
+          const message = document.getElementById('message').value;
+
+          // In a real implementation, you would send this data to a server
+          // For this example, we'll just show an alert
+          alert(
+            `Thank you, ${name}! Your message has been received. I'll get back to you at ${email} soon.`
+          );
+
+          // Reset the form
+          document.getElementById('contactForm').reset();
+        });
+
+      // Add hover effect to game cards
+      const gameCards = document.querySelectorAll('.game-card');
+      gameCards.forEach((card) => {
+        card.addEventListener('mouseenter', function () {
+          this.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
+        });
+
+        card.addEventListener('mouseleave', function () {
+          this.style.boxShadow = 'none';
+        });
+      });
+    </script>
+  </body>
+</html>
