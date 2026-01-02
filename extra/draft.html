@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>all about sarah</title>
-    <link rel="icon" href="https://i.imgur.com/J4RlGZx.png" type="image/png" />
+    <link
+      rel="icon"
+      href="https://i.pinimg.com/736x/2d/74/16/2d74168a61c774b55451913f5ffe9e6e.jpg"
+      type="image/jpeg"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -13,18 +17,15 @@
       @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
       :root {
-        /* Rilakkuma Color Palette */
-        --rilakkuma-brown: #c59d5f; /* Main golden brown */
-        --rilakkuma-light-brown: #e6c9a8; /* Light cream brown */
-        --rilakkuma-cream: #f5e8d0; /* Cream background */
-        --rilakkuma-dark-brown: #8b7355; /* Dark brown */
-        --rilakkuma-golden: #e6b422; /* Golden accent */
-        --rilakkuma-beige: #f0e6d2; /* Light beige */
-        --rilakkuma-tan: #d4b483; /* Tan accent */
-        --light-gray: #faf8f5; /* Light cream-gray */
-        --text-dark: #5c4b37; /* Warm brown text */
-        --text-medium: #7a6a56; /* Medium brown text */
-        --border-color: rgba(139, 115, 85, 0.15); /* Transparent brown */
+        --pastel-pink: #ffd6e0;
+        --pastel-blue: #c1e1ff;
+        --pastel-green: #c6ffc1;
+        --pastel-purple: #e0c1ff;
+        --pastel-yellow: #fff5c1;
+        --light-gray: #f8f9fa;
+        --text-dark: #333;
+        --text-medium: #555;
+        --border-color: rgba(0, 0, 0, 0.1);
       }
 
       * {
@@ -54,16 +55,16 @@
         padding: 0 20px;
       }
 
-      /* Header Styles - Rilakkuma Brown Gradient */
+      /* Header Styles */
       header {
         background: linear-gradient(
           135deg,
-          var(--rilakkuma-brown),
-          var(--text-dark)
+          var(--pastel-pink),
+          var(--pastel-blue)
         );
         padding: 2rem 0; /* Keep PC size */
         text-align: center;
-        box-shadow: 0 4px 12px rgba(139, 115, 85, 0.356);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.356);
       }
 
       @media (max-width: 768px) {
@@ -90,24 +91,23 @@
         height: 180px;
         border-radius: 50%;
         object-fit: cover;
-        border: 6px solid var(--rilakkuma-cream);
-        box-shadow: 0 6px 16px rgba(139, 115, 85, 0.2);
+        border: 6px solid white;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
       }
 
       @media (max-width: 768px) {
         .profile-img {
           width: 150px; /* Smaller on mobile */
           height: 150px;
-          border: 5px solid var(--rilakkuma-cream);
+          border: 5px solid white;
         }
       }
 
       .intro-text h1 {
         font-size: 3rem; /* Keep PC size */
-        color: var(--rilakkuma-cream);
+        color: var(--text-dark);
         margin-bottom: 0.5rem;
         line-height: 1.1;
-        text-shadow: 1px 1px 3px rgba(92, 75, 55, 0.3);
       }
 
       @media (max-width: 768px) {
@@ -118,10 +118,9 @@
 
       .intro-text p {
         font-size: 1.3rem; /* Keep PC size */
-        color: var(--rilakkuma-cream);
+        color: var(--text-medium);
         max-width: 700px;
         margin: 0 auto;
-        text-shadow: 0 1px 2px rgba(92, 75, 55, 0.2);
       }
 
       @media (max-width: 768px) {
@@ -156,13 +155,13 @@
         }
       }
 
-      /* About Me Section - Rilakkuma Colors */
+      /* About Me Section */
       .about-me {
-        background-color: var(--rilakkuma-cream);
+        background-color: white;
         padding: 2rem; /* Keep PC size */
         border-radius: 16px;
-        box-shadow: 0 6px 16px rgba(139, 115, 85, 0.1);
-        border-left: 8px solid var(--rilakkuma-brown);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        border-left: 8px solid var(--pastel-pink);
       }
 
       @media (max-width: 768px) {
@@ -179,8 +178,8 @@
       .about-me h2 {
         background: linear-gradient(
           135deg,
-          var(--rilakkuma-brown),
-          var(--rilakkuma-dark-brown)
+          var(--pastel-pink),
+          var(--pastel-blue)
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -197,10 +196,10 @@
       .btn {
         background: linear-gradient(
           to right,
-          var(--rilakkuma-brown),
-          var(--rilakkuma-tan)
+          var(--pastel-pink),
+          var(--pastel-blue)
         );
-        color: var(--rilakkuma-cream);
+        color: white;
         border: none;
         border-radius: 8px;
         font-family: 'Sour Gummy', sans-serif;
@@ -216,8 +215,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 7px 5px 5px rgba(139, 115, 85, 0.2);
-        text-shadow: 0 1px 2px rgba(92, 75, 55, 0.3);
+        box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.322);
       }
 
       @media (max-width: 768px) {
@@ -225,28 +223,21 @@
           height: 45px; /* Smaller on mobile */
           width: 140px;
           font-size: 1.1rem;
-          box-shadow: 4px 3px 5px rgba(139, 115, 85, 0.15);
+          box-shadow: 4px 3px 5px rgba(0, 0, 0, 0.2);
         }
       }
 
       .btn:hover {
         transform: scale(1.1);
-        background: linear-gradient(
-          to right,
-          var(--rilakkuma-dark-brown),
-          var(--rilakkuma-brown)
-        );
       }
 
       .about-me h3 {
         margin-top: 15px;
         margin-bottom: 0px;
-        color: var(--rilakkuma-dark-brown);
       }
 
       .about-me li {
         margin-left: 20px;
-        color: var(--text-medium);
       }
 
       .intro-text p {
@@ -255,11 +246,11 @@
 
       /* additional information */
       .additional-info {
-        background-color: var(--rilakkuma-cream);
+        background-color: white;
         padding: 2rem; /* Keep PC size */
         border-radius: 16px;
-        box-shadow: 0 6px 16px rgba(139, 115, 85, 0.1);
-        border-left: 8px solid var(--rilakkuma-tan);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        border-left: 8px solid var(--pastel-blue);
       }
 
       @media (max-width: 768px) {
@@ -272,8 +263,8 @@
       .additional-info h2 {
         background: linear-gradient(
           135deg,
-          var(--rilakkuma-brown),
-          var(--rilakkuma-dark-brown)
+          var(--pastel-pink),
+          var(--pastel-blue)
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -290,7 +281,6 @@
       .additional-info h3 {
         font-size: 1.3em; /* Keep PC size */
         margin-bottom: -10px;
-        color: var(--rilakkuma-dark-brown);
       }
 
       @media (max-width: 768px) {
@@ -300,18 +290,14 @@
         }
       }
 
-      .additional-info p {
-        color: var(--text-medium);
-      }
-
-      /* Games Showcase - Rilakkuma Colors */
+      /* Games Showcase - FIXED FOR PC */
       .games-showcase {
         margin-top: 3rem; /* Keep PC size */
-        background-color: var(--rilakkuma-cream);
+        background-color: white;
         padding: 2.5rem; /* Keep PC size */
         border-radius: 16px;
-        box-shadow: 0 6px 16px rgba(139, 115, 85, 0.1);
-        border-left: 8px solid var(--rilakkuma-golden);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        border-left: 8px solid var(--pastel-purple);
       }
 
       @media (max-width: 768px) {
@@ -325,8 +311,8 @@
       .games-showcase h2 {
         background: linear-gradient(
           135deg,
-          var(--rilakkuma-brown),
-          var(--rilakkuma-dark-brown)
+          var(--pastel-pink),
+          var(--pastel-blue)
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -356,9 +342,9 @@
         }
       }
 
-      /* Game Cards - Rilakkuma Colors */
+      /* FIXED: Game card with equal height and aligned tags */
       .game-card {
-        background-color: var(--rilakkuma-beige);
+        background-color: var(--light-gray);
         border-radius: 12px;
         overflow: hidden;
         transition: transform 0.5s;
@@ -366,12 +352,10 @@
         display: flex;
         flex-direction: column; /* Make card a flex container */
         height: 100%; /* Make all cards equal height */
-        box-shadow: 0 4px 12px rgba(139, 115, 85, 0.1);
       }
 
       .game-card:hover {
         transform: translateY(-8px);
-        border-color: var(--rilakkuma-tan);
       }
 
       .game-img {
@@ -401,7 +385,7 @@
       }
 
       .game-info h3 {
-        color: var(--rilakkuma-dark-brown);
+        color: var(--text-dark);
         font-size: 1.5rem; /* Keep PC size */
         margin-bottom: 0.8rem;
       }
@@ -420,7 +404,7 @@
         flex-grow: 1; /* Push tags to bottom */
       }
 
-      /* Game Tags - Rilakkuma Colors */
+      /* FIXED: Game tags - perfectly aligned across all cards */
       .game-tags {
         display: flex;
         flex-wrap: wrap;
@@ -430,30 +414,31 @@
       }
 
       .tag {
-        background-color: var(--rilakkuma-light-brown);
-        color: var(--rilakkuma-dark-brown);
+        background-color: var(--pastel-green);
         padding: 0.3rem 0.8rem;
         border-radius: 20px;
         font-size: 0.9rem;
         white-space: nowrap;
-        border: 1px solid rgba(139, 115, 85, 0.2);
       }
 
-      .tag:hover {
-        background-color: var(--rilakkuma-tan);
+      /* REMOVED: Old tag classes */
+      .game1,
+      .game2,
+      .game3 {
+        display: none; /* Remove these classes */
       }
 
-      /* Footer - Rilakkuma Colors */
+      /* Footer */
       footer {
         background: linear-gradient(
           135deg,
-          var(--rilakkuma-brown),
-          var(--rilakkuma-dark-brown)
+          var(--pastel-blue),
+          var(--pastel-pink)
         );
         padding: 2rem 0; /* Keep PC size */
         text-align: center;
         margin-top: 3rem;
-        box-shadow: 0 -1px 4px rgba(139, 115, 85, 0.2);
+        box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
       }
 
       @media (max-width: 768px) {
@@ -483,15 +468,14 @@
         justify-content: center;
         width: 50px; /* Keep PC size */
         height: 50px;
-        background-color: var(--rilakkuma-cream);
+        background-color: white;
         border-radius: 50%;
-        color: var(--rilakkuma-dark-brown);
+        color: #555;
         font-size: 1.5rem;
         transition:
           transform 0.3s,
           background-color 0.3s;
         text-decoration: none;
-        box-shadow: 0 3px 8px rgba(139, 115, 85, 0.2);
       }
 
       @media (max-width: 768px) {
@@ -504,14 +488,12 @@
 
       .social-icon:hover {
         transform: scale(1.1);
-        background-color: var(--rilakkuma-golden);
-        color: var(--rilakkuma-cream);
+        background-color: var(--pastel-yellow);
       }
 
       .copyright {
-        color: var(--rilakkuma-light-brown);
+        color: var(--text-medium);
         font-size: 0.9rem; /* Keep PC size */
-        text-shadow: 0 1px 2px rgba(92, 75, 55, 0.3);
       }
 
       @media (max-width: 768px) {
@@ -560,7 +542,7 @@
       <div class="container">
         <div class="profile-section">
           <img
-            src="https://i.pinimg.com/1200x/f5/f0/ba/f5f0bafc4c6e1e0e8d8ca0860f97293f.jpg"
+            src="https://vzrah.carrd.co/assets/images/image01.jpg?v=6e2dd359"
             alt="Profile Picture"
             class="profile-img"
           />
