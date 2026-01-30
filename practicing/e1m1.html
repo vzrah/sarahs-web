@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>HTML Template</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        position: relative;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .orange {
+        background-color: orange;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+
+      .counter {
+        position: absolute;
+        bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container red" id="container">
+      <button id="btn" onclick="change()">Change Colour</button>
+      <div class="counter">Clicks: 0</div>
+    </div>
+
+    <script>
+      //colour
+      let colours = ['red', 'orange', 'blue'];
+      let container = document.getElementById('container');
+      let currentColourIndex = 0;
+      //count
+      let count = 0;
+      let counter = document.querySelector('.counter');
+      function change() {
+        let colour = colours[currentColourIndex];
+        container.classList.remove(colour);
+        currentColourIndex = currentColourIndex + 1;
+
+        if (currentColourIndex > colours.length) {
+          currentColourIndex = 0;
+        }
+
+        colour = colours[currentColourIndex];
+        container.classList.add(colour);
+
+        count++;
+
+        if (count > 3) {
+          alert('More than 3 clicks');
+        }
+
+        counter.innerHTML = `Count: ${count}`;
+      }
+    </script>
+  </body>
+</html>

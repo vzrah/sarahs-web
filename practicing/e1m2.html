@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Gallery</title>
+    <style>
+      img {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Gallery</h1>
+
+    <div id="display"></div>
+
+    <button onclick="previous()">Previous</button>
+    <button onclick="next()">Next</button>
+
+    <script>
+      let display = document.getElementById('display');
+
+      let items = [
+        {
+          title: 'cat',
+          image:
+            'https://i.pinimg.com/736x/db/1c/80/db1c8012fc21817a11802e1085a833bf.jpg',
+        },
+        {
+          title: 'dog',
+          image:
+            'https://i.pinimg.com/736x/b0/02/9b/b0029b880a63570c907bbd5d5d28126d.jpg',
+        },
+        {
+          title: 'parrot',
+          image:
+            'https://i.pinimg.com/736x/db/1c/80/db1c8012fc21817a11802e1085a833bf.jpg',
+        },
+        {
+          title: 'turtle',
+          image:
+            'https://i.pinimg.com/736x/b0/02/9b/b0029b880a63570c907bbd5d5d28126d.jpg',
+        },
+      ];
+      let index = 0;
+
+      function showItem() {
+        display.innerHTML = `
+    <img src="${items[index].image}" alt="${items[index].title}">
+    <p>${items[index].title}</p>
+  `;
+      }
+
+      function next() {
+        index++; // move forward
+
+        if (index >= items.length) {
+          index = 0; // wrap back to start
+        }
+
+        showItem();
+      }
+
+      function previous() {
+        index--; // move backward
+
+        if (index < 0) {
+          index = items.length - 1; // wrap to last item
+        }
+
+        showItem();
+      }
+
+      showItem();
+    </script>
+  </body>
+</html>
