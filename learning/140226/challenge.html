@@ -48,6 +48,8 @@
         let btn = document.querySelector('.btn');
         btn.innerHTML = ` ${btnName} <i class="bi bi-check-circle-fill"></i>
       `;
+        btn.classList.remove('.btn-outline-secondary');
+        btn.classList.add('btn-success');
       }
     </script>
   </body>
