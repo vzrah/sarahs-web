@@ -46,10 +46,10 @@
       function correctAnswer() {
         let btnName = document.querySelector('.btn').innerHTML;
         let btn = document.querySelector('.btn');
-        btn.innerHTML = ` ${btnName} <i class="bi bi-check-circle-fill"></i>
-      `;
+        btn.innerHTML = ` ${btnName} <i class="bi bi-check-circle-fill"></i>`;
         btn.classList.remove('.btn-outline-secondary');
-        btn.classList.add('btn-success');
+        btn.classList.add('bg-success');
+        btn.classList.add('.text-light');
       }
     </script>
   </body>
