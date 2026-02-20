@@ -21,28 +21,18 @@
     <div class="container">
       <h1 class="text-center mt-5">Simple Quiz App</h1>
       <p class="text-center mt-4">
-        <span class="fw-bold">Question 1.</span> What does HTML stand for?
+        <span class="q-title fw-bold">Question 1.</span> What does HTML stand
+        for?
       </p>
-      <button
-        onclick="correctAnswer()"
-        type="button"
-        class="btn btn-outline-secondary col-md-12 mb-3"
-      >
-        Correct
-      </button>
-      <button type="button" class="btn btn-outline-secondary col-md-12 mb-3">
-        Secondary
-      </button>
-      <button type="button" class="btn btn-outline-secondary col-md-12 mb-3">
-        Secondary
-      </button>
-      <button type="button" class="btn btn-outline-secondary col-md-12 mb-3">
-        Secondary
-      </button>
-      <button type="button" class="btn btn-primary col-md-12 mb-3">Next</button>
+      <div class="answers"></div>
     </div>
 
     <script>
+      let questions = [
+        { number: '1', title: 'What does HTML stand for?' },
+        { number: '2', title: 'Which language runs in a web browser?' },
+      ];
+
       function correctAnswer() {
         let btnName = document.querySelector('.btn').innerHTML;
         let btn = document.querySelector('.btn');
