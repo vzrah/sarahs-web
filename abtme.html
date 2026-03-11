@@ -13,18 +13,18 @@
       @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
       :root {
-        /* Rilakkuma Color Palette */
-        --rilakkuma-brown: #c59d5f; /* Main golden brown */
-        --rilakkuma-light-brown: #e6c9a8; /* Light cream brown */
-        --rilakkuma-cream: #f5e8d0; /* Cream background */
-        --rilakkuma-dark-brown: #8b7355; /* Dark brown */
-        --rilakkuma-golden: #e6b422; /* Golden accent */
-        --rilakkuma-beige: #f0e6d2; /* Light beige */
-        --rilakkuma-tan: #d4b483; /* Tan accent */
-        --light-gray: #faf8f5; /* Light cream-gray */
-        --text-dark: #5c4b37; /* Warm brown text */
-        --text-medium: #7a6a56; /* Medium brown text */
-        --border-color: rgba(139, 115, 85, 0.15); /* Transparent brown */
+        /* Soft Pink Theme Palette */
+        --rilakkuma-brown: #e6a6b8; /* main soft pink */
+        --rilakkuma-light-brown: #f6d7df; /* light pastel pink */
+        --rilakkuma-cream: #fff7fa; /* very soft background */
+        --rilakkuma-dark-brown: #c97a93; /* darker accent pink */
+        --rilakkuma-golden: #e88aa6; /* hover / highlight pink */
+        --rilakkuma-beige: #fbe6ec; /* card background */
+        --rilakkuma-tan: #e9a3b6; /* medium accent pink */
+        --light-gray: #fff9fb; /* page background */
+        --text-dark: #6e4b57; /* soft dark text */
+        --text-medium: #8c6a76; /* medium text */
+        --border-color: rgba(201, 122, 147, 0.15);
       }
 
       * {
@@ -36,7 +36,7 @@
       body {
         font-family: 'Fredoka', sans-serif;
         color: var(--text-dark);
-        background-color: var(--light-gray);
+        background: linear-gradient(180deg, #fff9fb 0%, #fff4f8 100%);
         line-height: 1.6;
       }
 
@@ -56,14 +56,10 @@
 
       /* Header Styles - Rilakkuma Brown Gradient */
       header {
-        background: linear-gradient(
-          135deg,
-          var(--rilakkuma-brown),
-          var(--text-dark)
-        );
-        padding: 2rem 0; /* Keep PC size */
+        background: linear-gradient(135deg, #f3c7d2, #e6a8b8);
+        padding: 1.4rem 0;
         text-align: center;
-        box-shadow: 0 4px 12px rgba(139, 115, 85, 0.356);
+        box-shadow: 0 3px 10px rgba(201, 122, 146, 0.18);
       }
 
       @media (max-width: 768px) {
@@ -86,12 +82,13 @@
       }
 
       .profile-img {
-        width: 180px; /* Keep PC size */
-        height: 180px;
+        width: 150px;
+        height: 150px;
+        margin-bottom: -20px;
         border-radius: 50%;
         object-fit: cover;
-        border: 6px solid var(--rilakkuma-cream);
-        box-shadow: 0 6px 16px rgba(139, 115, 85, 0.2);
+        border: 5px solid var(--rilakkuma-cream);
+        box-shadow: 0 4px 10px rgba(201, 122, 146, 0.2);
       }
 
       @media (max-width: 768px) {
@@ -311,7 +308,7 @@
         padding: 2.5rem; /* Keep PC size */
         border-radius: 16px;
         box-shadow: 0 6px 16px rgba(139, 115, 85, 0.1);
-        border-left: 8px solid var(--rilakkuma-golden);
+        border-left: 8px solid var(--rilakkuma-brown);
       }
 
       @media (max-width: 768px) {
@@ -560,14 +557,14 @@
       <div class="container">
         <div class="profile-section">
           <img
-            src="https://i.pinimg.com/1200x/f5/f0/ba/f5f0bafc4c6e1e0e8d8ca0860f97293f.jpg"
+            src="https://i.pinimg.com/736x/8a/86/f2/8a86f281a8c23dffe4374d098466d1de.jpg"
             alt="Profile Picture"
             class="profile-img"
           />
           <div class="intro-text">
-            <h1>sarah (@vzrah)</h1>
-            <p>your average gamer with very good academics</p>
-            <p>will 100% slime you in roblox</p>
+            <h1>sarah</h1>
+            <p>my about me page all coded by me</p>
+            <p>age disclosed</p>
           </div>
         </div>
       </div>
@@ -578,27 +575,25 @@
         <section class="about-me">
           <h2>everything you need to know about me</h2>
           <p>
-            hi, my name is sarah and i live in sydney, australia. i'd say my
-            personality is pretty chill. i'm friendly, a little sarcastic, and i
-            warm up once i'm comfortable. i like doing my own thing and working
-            on stuff i'm actually interested in, especially creative or tech
-            related projects.
+            hi, i'm sarah from sydney, australia. i'm pretty chill and usually
+            just do my own thing. a bit sarcastic sometimes but generally
+            easygoing once i'm comfortable.
           </p>
 
           <p>
-            one of my main hobbies is gaming. i mostly play roblox and i'm
-            genuinely cracked at games like volleyball legends and arsenal. i
-            really enjoy fps games because they're fast paced and competitive,
-            and i like improving my aim and reaction time. gaming is something i
-            use to relax, but i also like being good at what i play.
+            most of my free time is spent gaming. i mainly play roblox,
+            especially games like volleyball legends and arsenal. i like fast
+            paced fps games because they're competitive and actually require
+            good aim and reaction time. it's fun trying to improve and get
+            better at something while still just playing for fun.
           </p>
 
           <p>
-            when i'm not gaming, i'm usually procrastinating, listening to
-            music, or working on random creative or tech projects. i like
-            learning by experimenting instead of being told exactly what to do,
-            and i enjoy projects where i can make things look good and actually
-            work.
+            when i'm not gaming i'm usually listening to music, procrastinating,
+            or messing around with random creative or tech projects. i prefer
+            figuring things out myself instead of following step by step
+            instructions, especially when it comes to making something that both
+            looks good and works properly.
           </p>
 
           <h3>skills & expertise</h3>
@@ -618,16 +613,10 @@
         <section class="additional-info">
           <h2>additional info</h2>
           <h3>usernames</h3>
-          <p>the only usernames i go by in socials are:</p>
-          <p>- ig: @vzrah_</p>
-          <p>- tt: @vzrahh</p>
-          <p>- roblox: @sarahiousIy</p>
-          <p>- everything else: @vzrah</p>
-          <p>
-            im tryna make all my usernames the same at some point so i might of
-            missed a few. just dm me if u wanna confirm any acc that might
-            belong to me
-          </p>
+          <p>the only usernames or aliases i go by are:</p>
+          <p>vzrah / sarahiously / val / valerie</p>
+          <p>roblox: @sarahiousIy</p>
+          <p>discord: @vzrah</p>
         </section>
       </div>
 
@@ -637,7 +626,7 @@
           <!-- Game 1 -->
           <div class="game-card">
             <img
-              src="https://tr.rbxcdn.com/180DAY-fe3fe230c53efe23cf964c5e019fe150/768/432/Image/Webp/noFilter"
+              src="https://external-preview.redd.it/volleyball-legends-codes-october-2025-update-39-v0-VUdgCAUrCX7dsprpEfhXRWIo4EgCirGWkgv9gXzyA2w.jpeg?width=640&crop=smart&auto=webp&s=d30ebb2123af9f2635c77c6c405a2ca96aa89344"
               alt="Volleyball Legends"
               class="game-img"
             />

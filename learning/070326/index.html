@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Get to know Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="navbar sticky-top bg-primary flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand me-0 px-3 fs-4 text-white" href="#"
+        ><i class="bi bi-shop me-2"></i>Product Store</a
+      >
+      <button class="btn btn-light">Cart</button>
+    </div>
+    <div class="container text-center">
+      <h1 class="my-5">Our Products</h1>
+      <div class="row row-cols-1 row-cols-md-3 row-gap-4 productGallery"></div>
+    </div>
+
+    <div
+      class="modal fade productDetailsModal"
+      tabindex="-1"
+      aria-labelledby="descriptionModallLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="myModalClass" id="descriptionModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img class="myModalImage" src="" />
+            <p class="description"><span>My description</span></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+            let products = [
+              {
+                id: 1,
+                name: 'Laptop',
+                description: 'High-performance laptop for work and gaming',
+                price: 999.99,
+                category: 'Electronics',
+                stock: 5,
+                image:
+                  'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400',
+              },
+              {
+                id: 2,
+                name: 'Smartphone',
+                description: 'Latest model with amazing camera',
+                price: 699.99,
+                category: 'Electronics',
+                stock: 0,
+                image:
+                  'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400',
+              },
+              {
+                id: 3,
+                name: 'Headphones',
+                description: 'Noise-cancelling wireless headphones',
+                price: 199.99,
+                category: 'Audio',
+                stock: 15,
+                image:
+                  'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
+              },
+              {
+                id: 4,
+                name: 'Keyboard',
+                description: 'Mechanical gaming keyboard with RGB',
+                price: 89.99,
+                category: 'Accessories',
+                stock: 8,
+                image:
+                  'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400',
+              },
+              {
+                id: 5,
+                name: 'Mouse',
+                description: 'Ergonomic wireless mouse',
+                price: 49.99,
+                category: 'Accessories',
+                stock: 12,
+                image:
+                  'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400',
+              },
+            ];
+            let content = ``;
+
+            for (let i = 0; i < products.length; i++) {
+              let currentProduct = products[i];
+              let cardClass = '';
+              let buttonAttribute = '';
+              if (currentProduct.stock <= 0) {
+                cardClass = 'opacity-50';
+                buttonAttribute = 'disabled';
+              }
+              let productCard = `
+               <div class="col">
+              <div class="card ${cardClass} w-100 h-100 text-start">
+        <img src="${currentProduct.image}" class="card-img-top w-100 h-50" alt="${currentProduct.name}">
+        <div class="card-body">
+          <h5 class="card-title">${currentProduct.name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${currentProduct.category}</h6>
+          <p class="card-text">${currentProduct.description}</p>
+          <button ${buttonAttribute} onclick="displayItemDetails(${i})"  class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target=".productDetailsModal">Description</button>
+        </div>
+      </div>
+      </div>`;
+              content += productCard;
+            }
+            document.querySelector('.productGallery').innerHTML = content;
+
+            function displayItemDetails(index) {
+              document.querySelector('.myModalTitle') = currentProduct.name;
+              document.querySelector('.myModalImage') = currentProduct.image;
+            }
+    </script>
+  </body>
+</html>
