@@ -1,213 +1,227 @@
 <!doctype html>
 <html>
-<head>
-<title>Get to know Bootstrap</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <title>Get to know Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
 
-</head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar sticky-top bg-primary flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand me-0 px-3 fs-4 text-white" href="#">
+        <i class="bi bi-shop me-2"></i>Product Store
+      </a>
 
-<body>
+      <button
+        class="btn btn-light position-relative"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#cartCanvas"
+      >
+        <i class="bi bi-cart"></i> Cart
+        <span
+          class="badge bg-danger position-absolute top-0 start-100 translate-middle"
+          id="cartCount"
+          >0</span
+        >
+      </button>
+    </div>
 
-<!-- NAVBAR -->
-<div class="navbar sticky-top bg-primary flex-md-nowrap p-0 shadow">
-<a class="navbar-brand me-0 px-3 fs-4 text-white" href="#">
-<i class="bi bi-shop me-2"></i>Product Store
-</a>
+    <div class="container text-center">
+      <h1 class="my-5">Our Products</h1>
+      <div class="row row-cols-1 row-cols-md-3 row-gap-4 productGallery"></div>
+    </div>
 
-<button class="btn btn-light position-relative"
-data-bs-toggle="offcanvas"
-data-bs-target="#cartCanvas">
+    <!-- PRODUCT MODAL -->
+    <div class="modal fade" id="productModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalProductName"></h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
 
-<i class="bi bi-cart"></i> Cart
-<span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cartCount">0</span>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-5">
+                <img id="modalProductImage" class="img-fluid rounded" />
+              </div>
 
-</button>
-</div>
+              <div class="col-md-7 text-start">
+                <p>
+                  <strong>Description:</strong>
+                  <span id="modalProductDescription"></span>
+                </p>
 
+                <p>
+                  <strong>Price:</strong> $<span id="modalProductPrice"></span>
+                </p>
 
-<div class="container text-center">
-<h1 class="my-5">Our Products</h1>
-<div class="row row-cols-1 row-cols-md-3 row-gap-4 productGallery"></div>
-</div>
+                <p>
+                  <strong>Category:</strong>
+                  <span id="modalProductCategory"></span>
+                </p>
 
+                <p>
+                  <strong>Stock:</strong>
+                  <span id="modalProductStock"></span>
+                </p>
 
-<!-- PRODUCT MODAL -->
-<div class="modal fade" id="productModal">
+                <!-- QUANTITY -->
+                <div class="d-flex align-items-center gap-3 mt-3">
+                  <label class="fw-bold">Quantity:</label>
 
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
+                  <div class="btn-group">
+                    <button
+                      class="btn btn-outline-secondary"
+                      onclick="decreaseQuantity()"
+                    >
+                      -
+                    </button>
 
-<div class="modal-header">
-<h5 class="modal-title" id="modalProductName"></h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
+                    <input
+                      id="quantityInput"
+                      class="form-control text-center"
+                      value="1"
+                      style="width: 60px"
+                      readonly
+                    />
 
-<div class="modal-body">
+                    <button
+                      class="btn btn-outline-secondary"
+                      onclick="increaseQuantity()"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-<div class="row">
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button
+              class="btn btn-primary"
+              onclick="addToCart()"
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="col-md-5">
-<img id="modalProductImage" class="img-fluid rounded">
-</div>
+    <!-- CART -->
+    <div class="offcanvas offcanvas-end" id="cartCanvas">
+      <div class="offcanvas-header">
+        <h5>Shopping Cart</h5>
+        <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
 
-<div class="col-md-7 text-start">
+      <div class="offcanvas-body">
+        <div id="cartItems">
+          <p class="text-muted text-center">Cart is empty</p>
+        </div>
 
-<p><strong>Description:</strong>
-<span id="modalProductDescription"></span>
-</p>
+        <hr />
 
-<p><strong>Price:</strong>
-$<span id="modalProductPrice"></span>
-</p>
+        <div class="d-flex justify-content-between">
+          <strong>Total</strong>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+      </div>
+    </div>
 
-<p><strong>Category:</strong>
-<span id="modalProductCategory"></span>
-</p>
+    <script>
+      let products = [
+        {
+          id: 1,
+          name: 'Laptop',
+          description: 'High-performance laptop for work and gaming',
+          price: 999.99,
+          category: 'Electronics',
+          stock: 5,
+          image:
+            'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400',
+        },
 
-<p>
-<strong>Stock:</strong>
-<span id="modalProductStock"></span>
-</p>
+        {
+          id: 2,
+          name: 'Smartphone',
+          description: 'Latest model with amazing camera',
+          price: 699.99,
+          category: 'Electronics',
+          stock: 0,
+          image:
+            'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400',
+        },
 
-<!-- QUANTITY -->
-<div class="d-flex align-items-center gap-3 mt-3">
+        {
+          id: 3,
+          name: 'Headphones',
+          description: 'Noise-cancelling wireless headphones',
+          price: 199.99,
+          category: 'Audio',
+          stock: 15,
+          image:
+            'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
+        },
 
-<label class="fw-bold">Quantity:</label>
+        {
+          id: 4,
+          name: 'Keyboard',
+          description: 'Mechanical gaming keyboard with RGB',
+          price: 89.99,
+          category: 'Accessories',
+          stock: 8,
+          image:
+            'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400',
+        },
 
-<div class="btn-group">
+        {
+          id: 5,
+          name: 'Mouse',
+          description: 'Ergonomic wireless mouse',
+          price: 49.99,
+          category: 'Accessories',
+          stock: 12,
+          image:
+            'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400',
+        },
+      ];
 
-<button class="btn btn-outline-secondary" onclick="decreaseQuantity()">-</button>
+      let cart = [];
+      let currentProduct = null;
+      let quantity = 1;
 
-<input id="quantityInput" class="form-control text-center" value="1" style="width:60px" readonly>
+      let content = '';
 
-<button class="btn btn-outline-secondary" onclick="increaseQuantity()">+</button>
+      for (let i = 0; i < products.length; i++) {
+        let p = products[i];
 
-</div>
+        let out = p.stock <= 0;
+        let opacity = out ? 'opacity-50' : '';
+        let disabled = out ? 'disabled' : '';
 
-</div>
+        let imageStyle =
+          p.name === 'Smartphone'
+            ? ''
+            : "style='height:200px; object-fit:cover;'";
 
-</div>
-</div>
-
-</div>
-
-<div class="modal-footer">
-<button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-<button class="btn btn-primary" onclick="addToCart()" data-bs-dismiss="modal">
-<i class="bi bi-cart-plus"></i> Add to Cart
-</button>
-</div>
-
-</div>
-</div>
-</div>
-
-
-
-<!-- CART -->
-<div class="offcanvas offcanvas-end" id="cartCanvas">
-
-<div class="offcanvas-header">
-<h5>Shopping Cart</h5>
-<button class="btn-close" data-bs-dismiss="offcanvas"></button>
-</div>
-
-<div class="offcanvas-body">
-
-<div id="cartItems">
-<p class="text-muted text-center">Cart is empty</p>
-</div>
-
-<hr>
-
-<div class="d-flex justify-content-between">
-<strong>Total</strong>
-<strong id="cartTotal">$0.00</strong>
-</div>
-
-</div>
-</div>
-
-
-
-<script>
-
-let products = [
-
-{
-id:1,
-name:'Laptop',
-description:'High-performance laptop for work and gaming',
-price:999.99,
-category:'Electronics',
-stock:5,
-image:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400'
-},
-
-{
-id:2,
-name:'Smartphone',
-description:'Latest model with amazing camera',
-price:699.99,
-category:'Electronics',
-stock:0,
-image:'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400'
-},
-
-{
-id:3,
-name:'Headphones',
-description:'Noise-cancelling wireless headphones',
-price:199.99,
-category:'Audio',
-stock:15,
-image:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400'
-},
-
-{
-id:4,
-name:'Keyboard',
-description:'Mechanical gaming keyboard with RGB',
-price:89.99,
-category:'Accessories',
-stock:8,
-image:'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400'
-},
-
-{
-id:5,
-name:'Mouse',
-description:'Ergonomic wireless mouse',
-price:49.99,
-category:'Accessories',
-stock:12,
-image:'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400'
-}
-
-];
-
-let cart=[];
-let currentProduct=null;
-let quantity=1;
-
-
-let content='';
-
-for(let i=0;i<products.length;i++){
-
-let p=products[i];
-
-let out=p.stock<=0;
-let opacity=out?'opacity-50':'';
-let disabled=out?'disabled':'';
-
-let imageStyle = p.name==="Smartphone" ? "" : "style='height:200px; object-fit:cover;'";
-
-content+=`
+        content += `
 
 <div class="col">
 
@@ -224,8 +238,8 @@ content+=`
 
 <p class="fw-bold text-primary">$${p.price}</p>
 
-<p class="${out?'text-danger':'text-success'} small">
-${out?'Out of Stock':'In Stock: '+p.stock}
+<p class="${out ? 'text-danger' : 'text-success'} small">
+${out ? 'Out of Stock' : 'In Stock: ' + p.stock}
 </p>
 
 <button ${disabled}
@@ -239,110 +253,93 @@ Show Details
 </button>
 
 </div>
+
+
+
+
+
 </div>
 
 </div>
 
 `;
+      }
 
-}
+      document.querySelector('.productGallery').innerHTML = content;
 
-document.querySelector(".productGallery").innerHTML=content;
+      function openProduct(index) {
+        currentProduct = products[index];
+        quantity = 1;
 
+        document.getElementById('quantityInput').value = 1;
 
+        document.getElementById('modalProductName').innerText =
+          currentProduct.name;
+        document.getElementById('modalProductImage').src = currentProduct.image;
+        document.getElementById('modalProductDescription').innerText =
+          currentProduct.description;
+        document.getElementById('modalProductPrice').innerText =
+          currentProduct.price;
+        document.getElementById('modalProductCategory').innerText =
+          currentProduct.category;
 
-function openProduct(index){
+        document.getElementById('modalProductStock').innerHTML =
+          currentProduct.stock > 0
+            ? "<span class='text-success'>In Stock</span>"
+            : "<span class='text-danger'>Out of Stock</span>";
+      }
 
-currentProduct=products[index];
-quantity=1;
+      function increaseQuantity() {
+        quantity++;
+        document.getElementById('quantityInput').value = quantity;
+      }
 
-document.getElementById("quantityInput").value=1;
+      function decreaseQuantity() {
+        if (quantity > 1) {
+          quantity--;
+          document.getElementById('quantityInput').value = quantity;
+        }
+      }
 
-document.getElementById("modalProductName").innerText=currentProduct.name;
-document.getElementById("modalProductImage").src=currentProduct.image;
-document.getElementById("modalProductDescription").innerText=currentProduct.description;
-document.getElementById("modalProductPrice").innerText=currentProduct.price;
-document.getElementById("modalProductCategory").innerText=currentProduct.category;
+      function addToCart() {
+        let existing = cart.find((item) => item.id === currentProduct.id);
 
-document.getElementById("modalProductStock").innerHTML=
-currentProduct.stock>0?
-"<span class='text-success'>In Stock</span>":
-"<span class='text-danger'>Out of Stock</span>";
+        if (existing) {
+          existing.qty += quantity;
+        } else {
+          cart.push({
+            id: currentProduct.id,
+            name: currentProduct.name,
+            price: currentProduct.price,
+            qty: quantity,
+          });
+        }
 
-}
+        updateCart();
+      }
 
+      function updateCart() {
+        let area = document.getElementById('cartItems');
+        let total = 0;
+        let count = 0;
 
+        if (cart.length === 0) {
+          area.innerHTML =
+            "<p class='text-muted text-center'>Cart is empty</p>";
+          document.getElementById('cartTotal').innerText = '$0.00';
+          document.getElementById('cartCount').innerText = '0';
+          return;
+        }
 
-function increaseQuantity(){
+        let html = '';
 
-quantity++;
-document.getElementById("quantityInput").value=quantity;
+        for (let item of cart) {
+          let itemTotal = item.price * item.qty;
 
-}
+          total += itemTotal;
+          count += item.qty;
 
-function decreaseQuantity(){
-
-if(quantity>1){
-
-quantity--;
-document.getElementById("quantityInput").value=quantity;
-
-}
-
-}
-
-
-
-function addToCart(){
-
-let existing=cart.find(item=>item.id===currentProduct.id);
-
-if(existing){
-
-existing.qty+=quantity;
-
-}else{
-
-cart.push({
-id:currentProduct.id,
-name:currentProduct.name,
-price:currentProduct.price,
-qty:quantity
-});
-
-}
-
-updateCart();
-
-}
-
-
-
-function updateCart(){
-
-let area=document.getElementById("cartItems");
-let total=0;
-let count=0;
-
-if(cart.length===0){
-
-area.innerHTML="<p class='text-muted text-center'>Cart is empty</p>";
-document.getElementById("cartTotal").innerText="$0.00";
-document.getElementById("cartCount").innerText="0";
-return;
-
-}
-
-let html='';
-
-for(let item of cart){
-
-let itemTotal=item.price*item.qty;
-
-total+=itemTotal;
-count+=item.qty;
-
-html+=`
+          html += `
 
 <div class="card mb-2">
 
@@ -361,17 +358,13 @@ $${item.price} × ${item.qty}
 </div>
 
 `;
+        }
 
-}
+        area.innerHTML = html;
 
-area.innerHTML=html;
-
-document.getElementById("cartTotal").innerText="$"+total.toFixed(2);
-document.getElementById("cartCount").innerText=count;
-
-}
-
-</script>
-
-</body>
+        document.getElementById('cartTotal').innerText = '$' + total.toFixed(2);
+        document.getElementById('cartCount').innerText = count;
+      }
+    </script>
+  </body>
 </html>
