@@ -224,40 +224,24 @@
         content += `
 
 <div class="col">
-
 <div class="card ${opacity} h-100 text-start">
-
 <img src="${p.image}" class="card-img-top" ${imageStyle}>
-
 <div class="card-body">
-
 <h5>${p.name}</h5>
 <h6 class="text-muted">${p.category}</h6>
-
 <p>${p.description}</p>
-
 <p class="fw-bold text-primary">$${p.price}</p>
-
 <p class="${out ? 'text-danger' : 'text-success'} small">
 ${out ? 'Out of Stock' : 'In Stock: ' + p.stock}
 </p>
-
 <button ${disabled}
 onclick="openProduct(${i})"
 data-bs-toggle="modal"
 data-bs-target="#productModal"
 class="btn btn-primary w-100">
-
 Show Details
-
 </button>
-
 </div>
-
-
-
-
-
 </div>
 
 </div>
@@ -285,12 +269,12 @@ Show Details
 
         document.getElementById('modalProductStock').innerHTML =
           currentProduct.stock > 0
-            ? "<span class='text-success'>In Stock</span>"
+            ? `<span class='text-success'>${currentProduct.stock}</span>`
             : "<span class='text-danger'>Out of Stock</span>";
       }
 
       function increaseQuantity() {
-        quantity++;
+        if (quantity < currentProduct.stock) quantity++;
         document.getElementById('quantityInput').value = quantity;
       }
 
@@ -302,11 +286,14 @@ Show Details
       }
 
       function addToCart() {
-        let existing = cart.find((item) => item.id === currentProduct.id);
+        // check if item already exists in cart
+        let existingItem = cart.find((item) => item.id === currentProduct.id);
 
-        if (existing) {
-          existing.qty += quantity;
+        if (existingItem) {
+          // if it exists → increase quantity
+          existingItem.qty += quantity;
         } else {
+          // if not → add new item
           cart.push({
             id: currentProduct.id,
             name: currentProduct.name,
@@ -319,12 +306,13 @@ Show Details
       }
 
       function updateCart() {
-        let area = document.getElementById('cartItems');
+        let cartArea = document.getElementById('cartItems');
         let total = 0;
         let count = 0;
 
+        // if empty
         if (cart.length === 0) {
-          area.innerHTML =
+          cartArea.innerHTML =
             "<p class='text-muted text-center'>Cart is empty</p>";
           document.getElementById('cartTotal').innerText = '$0.00';
           document.getElementById('cartCount').innerText = '0';
@@ -340,27 +328,17 @@ Show Details
           count += item.qty;
 
           html += `
-
-<div class="card mb-2">
-
-<div class="card-body p-2">
-
-<h6>${item.name}</h6>
-
-<p class="small text-muted">
-$${item.price} × ${item.qty}
-</p>
-
-<strong>$${itemTotal.toFixed(2)}</strong>
-
-</div>
-
-</div>
-
-`;
+      <div class="card mb-2">
+        <div class="card-body p-2">
+          <h6>${item.name}</h6>
+          <p class="small text-muted">$${item.price} × ${item.qty}</p>
+          <strong>$${itemTotal.toFixed(2)}</strong>
+        </div>
+      </div>
+    `;
         }
 
-        area.innerHTML = html;
+        cartArea.innerHTML = html;
 
         document.getElementById('cartTotal').innerText = '$' + total.toFixed(2);
         document.getElementById('cartCount').innerText = count;
