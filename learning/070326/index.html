@@ -342,12 +342,15 @@
         document.getElementById('cartCount').innerText = count;
       }
 
-      // Show Toast
-      function showToast(message) {
-        document.getElementById('toastMessage').innerText = message;
-        let toast = new bootstrap.Toast(document.getElementById('cartToast'));
-        toast.show();
-      }
+    function showToast(message) {
+  document.getElementById('toastMessage').innerText = message;
+
+  let toast = new bootstrap.Toast(
+    document.getElementById('favoriteToast')
+  );
+
+  toast.show();
+}
     </script>
   </body>
 </html>
