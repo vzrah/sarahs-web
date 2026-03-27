@@ -124,7 +124,7 @@
       </div>
     </div>
 
-    <!-- CART -->
+    <!-- CART OFFCANVAS -->
     <div class="offcanvas offcanvas-end" id="cartCanvas">
       <div class="offcanvas-header">
         <h5>Shopping Cart</h5>
@@ -145,6 +145,21 @@
       </div>
     </div>
 
+    <!-- TOAST -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="cartToast" class="toast">
+        <div class="toast-header bg-success text-white">
+          <i class="bi bi-check-circle me-2"></i>
+          <strong class="me-auto">Success</strong>
+          <button
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+        <div class="toast-body" id="toastMessage">Item added to cart!</div>
+      </div>
+    </div>
+
     <script>
       let products = [
         {
@@ -157,7 +172,6 @@
           image:
             'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400',
         },
-
         {
           id: 2,
           name: 'Smartphone',
@@ -168,7 +182,6 @@
           image:
             'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400',
         },
-
         {
           id: 3,
           name: 'Headphones',
@@ -179,7 +192,6 @@
           image:
             'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
         },
-
         {
           id: 4,
           name: 'Keyboard',
@@ -190,7 +202,6 @@
           image:
             'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400',
         },
-
         {
           id: 5,
           name: 'Mouse',
@@ -207,56 +218,47 @@
       let currentProduct = null;
       let quantity = 1;
 
+      // Render Products
       let content = '';
-
       for (let i = 0; i < products.length; i++) {
         let p = products[i];
-
         let out = p.stock <= 0;
         let opacity = out ? 'opacity-50' : '';
         let disabled = out ? 'disabled' : '';
-
-        let imageStyle =
-          p.name === 'Smartphone'
-            ? ''
-            : "style='height:200px; object-fit:cover;'";
+        let imageStyle = "style='height:200px; object-fit:cover;'";
 
         content += `
-
-<div class="col">
-<div class="card ${opacity} h-100 text-start">
-<img src="${p.image}" class="card-img-top" ${imageStyle}>
-<div class="card-body">
-<h5>${p.name}</h5>
-<h6 class="text-muted">${p.category}</h6>
-<p>${p.description}</p>
-<p class="fw-bold text-primary">$${p.price}</p>
-<p class="${out ? 'text-danger' : 'text-success'} small">
-${out ? 'Out of Stock' : 'In Stock: ' + p.stock}
-</p>
-<button ${disabled}
-onclick="openProduct(${i})"
-data-bs-toggle="modal"
-data-bs-target="#productModal"
-class="btn btn-primary w-100">
-Show Details
-</button>
-</div>
-</div>
-
-</div>
-
-`;
+          <div class="col">
+            <div class="card ${opacity} h-100 text-start">
+              <img src="${p.image}" class="card-img-top" ${imageStyle}>
+              <div class="card-body">
+                <h5>${p.name}</h5>
+                <h6 class="text-muted">${p.category}</h6>
+                <p>${p.description}</p>
+                <p class="fw-bold text-primary">$${p.price}</p>
+                <p class="${out ? 'text-danger' : 'text-success'} small">
+                  ${out ? 'Out of Stock' : 'In Stock: ' + p.stock}
+                </p>
+                <button ${disabled}
+                  onclick="openProduct(${i})"
+                  data-bs-toggle="modal"
+                  data-bs-target="#productModal"
+                  class="btn btn-primary w-100">
+                  Show Details
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
       }
 
       document.querySelector('.productGallery').innerHTML = content;
 
+      // Open Product Modal
       function openProduct(index) {
         currentProduct = products[index];
         quantity = 1;
-
         document.getElementById('quantityInput').value = 1;
-
         document.getElementById('modalProductName').innerText =
           currentProduct.name;
         document.getElementById('modalProductImage').src = currentProduct.image;
@@ -266,13 +268,13 @@ Show Details
           currentProduct.price;
         document.getElementById('modalProductCategory').innerText =
           currentProduct.category;
-
         document.getElementById('modalProductStock').innerHTML =
           currentProduct.stock > 0
             ? `<span class='text-success'>${currentProduct.stock}</span>`
             : "<span class='text-danger'>Out of Stock</span>";
       }
 
+      // Quantity Controls
       function increaseQuantity() {
         if (quantity < currentProduct.stock) quantity++;
         document.getElementById('quantityInput').value = quantity;
@@ -285,15 +287,13 @@ Show Details
         }
       }
 
+      // Add to Cart + Toast
       function addToCart() {
-        // check if item already exists in cart
         let existingItem = cart.find((item) => item.id === currentProduct.id);
 
         if (existingItem) {
-          // if it exists → increase quantity
           existingItem.qty += quantity;
         } else {
-          // if not → add new item
           cart.push({
             id: currentProduct.id,
             name: currentProduct.name,
@@ -302,15 +302,16 @@ Show Details
           });
         }
 
+        showToast(`${currentProduct.name} (x${quantity}) added to cart`);
         updateCart();
       }
 
+      // Update Offcanvas Cart
       function updateCart() {
         let cartArea = document.getElementById('cartItems');
         let total = 0;
         let count = 0;
 
-        // if empty
         if (cart.length === 0) {
           cartArea.innerHTML =
             "<p class='text-muted text-center'>Cart is empty</p>";
@@ -320,28 +321,32 @@ Show Details
         }
 
         let html = '';
-
         for (let item of cart) {
           let itemTotal = item.price * item.qty;
-
           total += itemTotal;
           count += item.qty;
 
           html += `
-      <div class="card mb-2">
-        <div class="card-body p-2">
-          <h6>${item.name}</h6>
-          <p class="small text-muted">$${item.price} × ${item.qty}</p>
-          <strong>$${itemTotal.toFixed(2)}</strong>
-        </div>
-      </div>
-    `;
+            <div class="card mb-2">
+              <div class="card-body p-2">
+                <h6 class="mb-1">${item.name}</h6>
+                <p class="small text-muted">$${item.price} × ${item.qty}</p>
+                <strong>$${itemTotal.toFixed(2)}</strong>
+              </div>
+            </div>
+          `;
         }
 
         cartArea.innerHTML = html;
-
         document.getElementById('cartTotal').innerText = '$' + total.toFixed(2);
         document.getElementById('cartCount').innerText = count;
+      }
+
+      // Show Toast
+      function showToast(message) {
+        document.getElementById('toastMessage').innerText = message;
+        let toast = new bootstrap.Toast(document.getElementById('cartToast'));
+        toast.show();
       }
     </script>
   </body>
