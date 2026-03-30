@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>CinemaHub - Final Exam 2025</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      /* ========================================
+              PROVIDED STYLES - DO NOT MODIFY
+              ======================================== */
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #1a1a2e;
+        color: #eee;
+        min-height: 100vh;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #e94560, #0f3460);
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: white;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .main-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px;
+      }
+
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #e94560;
+        border-left: 4px solid #e94560;
+        padding-left: 15px;
+      }
+
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup-overlay.show {
+        display: flex;
+      }
+
+      /* ========================================
+              EXERCISE 1: MEMBER REGISTRATION CSS
+              Write your CSS below
+              ======================================== */
+
+      input {
+        width: 100%;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 5px;
+        border: none;
+        height: 30px;
+        padding: 20px;
+      }
+
+      .form {
+        background-color: #16213e;
+        border-radius: 5px;
+        padding: 20px;
+        width: 300px;
+        font-size: 13px;
+      }
+
+      select {
+        width: 100%;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 5px;
+        border: none;
+        height: 30px;
+        padding-left: 15px;
+      }
+
+      .subheading {
+        font-weight: bolder;
+      }
+
+      .seperation {
+        padding: 10px;
+      }
+
+      .submitBtn {
+        border: none;
+        background-color: #e94560;
+        color: white;
+        border-radius: 5px;
+        width: 100px;
+        height: 35px;
+        font-weight: bolder;
+      }
+
+      .red {
+        color: #e94560;
+        font-weight: bolder;
+      }
+
+      .member-card {
+        background-color: #16213e;
+        border-radius: 5px;
+        padding: 20px;
+        width: 300px;
+        font-size: 13px;
+        border-right-color: #e94560;
+      }
+
+      .fullForm {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 50px;
+      }
+
+      /* ========================================
+              EXERCISE 2: MOVIES GALLERY CSS
+              Write your CSS below
+              ======================================== */
+    </style>
+  </head>
+  <body>
+    <!-- HEADER - PROVIDED (DO NOT MODIFY) -->
+    <header class="header">
+      <div class="logo">🎬 CinemaHub</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">Members</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <main class="main-container">
+      <!-- ========================================
+                EXERCISE 1: MEMBER REGISTRATION HTML
+                Create your form below
+                ======================================== -->
+      <section class="registration-section">
+        <h2 class="section-title">👤 Become a Member</h2>
+        <div class="fullForm">
+          <div class="form">
+            <div class="seperation">
+              <div class="subheading" id="name">Your Name</div>
+              <input type="text" placeholder="Enter your name" />
+            </div>
+            <div class="seperation">
+              <div class="subheading" id="email">Email Address</div>
+              <input type="text" placeholder="Enter your email" />
+            </div>
+            <div class="seperation">
+              <div class="subheading" id="genre"></div>
+              <select>
+                <option class="option1">Action</option>
+                <option class="option2">Comedy</option>
+                <option class="option3">Horror</option>
+                <option class="option4">Drama</option>
+                <option class="option5">Sci-Fi</option>
+              </select>
+            </div>
+            <div class="seperation">
+              <button class="submitBtn" onclick="submitForm()">Join Now</button>
+            </div>
+          </div>
+
+          <!-- TODO: Create a container to hold the form and member card side by side -->
+
+          <!-- TODO: Create the registration form with:
+                        - Name input (id="name")
+                        - Email input (id="email")
+                        - Genre select dropdown (id="genre")
+                        - Submit button with onclick="submitForm()"
+                   -->
+
+          <!-- Member card - will be shown after form submit -->
+          <div class="member-card">
+            <p class="red">✅ Welcome!</p>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+                EXERCISE 2: MOVIES GALLERY HTML
+                The gallery will be rendered by JavaScript
+                ======================================== -->
+      <section class="movies-section">
+        <h2 class="section-title">🎥 Now Showing</h2>
+        <div class="movies-gallery">
+          <!-- Movies will be rendered here by JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- POPUP STRUCTURE - PROVIDED (style it in Exercise 2) -->
+    <div class="popup-overlay" onclick="closePopup()">
+      <div class="popup-content" onclick="event.stopPropagation()">
+        <button class="popup-close" onclick="closePopup()">✕</button>
+        <img class="popup-poster" src="" alt="Movie Poster" />
+        <h3 class="popup-title"></h3>
+        <p class="popup-year"></p>
+        <p class="popup-description"></p>
+      </div>
+    </div>
+
+    <script>
+      /* ========================================
+              MOVIES DATA - PROVIDED (DO NOT MODIFY)
+              ======================================== */
+      let movies = [
+        {
+          title: 'The Dark Knight',
+          year: 2008,
+          poster:
+            'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
+          description:
+            'When the menace known as the Joker wreaks havoc on Gotham City, Batman must face his greatest challenge yet.',
+        },
+        {
+          title: 'Inception',
+          year: 2010,
+          poster:
+            'https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg',
+          description:
+            'A thief who steals corporate secrets through dream-sharing technology is given the task of planting an idea.',
+        },
+        {
+          title: 'Interstellar',
+          year: 2014,
+          poster:
+            'https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_.jpg',
+          description:
+            'A team of explorers travel through a wormhole in space in an attempt to ensure humanitys survival.',
+        },
+        {
+          title: 'The Matrix',
+          year: 1999,
+          poster:
+            'https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_.jpg',
+          description:
+            'A computer hacker learns about the true nature of reality and his role in the war against its controllers.',
+        },
+        {
+          title: 'Avatar',
+          year: 2009,
+          poster:
+            'https://m.media-amazon.com/images/M/MV5BMDEzMmQwZjctZWU2My00MWNlLWE0NjItMDJlYTRlNGJiZjcyXkEyXkFqcGc@._V1_.jpg',
+          description:
+            'A paraplegic Marine dispatched to Pandora on a unique mission becomes torn between following orders and protecting the world he feels is his home.',
+        },
+      ];
+
+      /* ========================================
+              EXERCISE 1: SUBMIT FORM FUNCTION
+              Complete this function
+              ======================================== */
+      function submitForm() {
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+
+        // TODO: Get the values from name, email, and genre inputs
+        // TODO: Select the member card element
+        // TODO: Set the innerHTML of member card to display the info
+        // TODO: Add 'show' class to member card to make it visible
+      }
+
+      /* ========================================
+              EXERCISE 2: RENDER MOVIES GALLERY
+              Write your for loop below
+              ======================================== */
+
+      for (let i = 0; i < movies.length; i++) {
+        let item = movies[i];
+
+        movies-gallery.innerHTML += `
+    <div onclick='showMoviePopup(${i})'>
+      <img src='${movies.poster}' alt='${item.title}'>
+    </div>
+  `;
+      }
+
+      // TODO: Create a variable to store the gallery HTML
+
+      // TODO: Write a for loop to go through the movies array
+      // For each movie, add HTML for a movie card with:
+      // - The movie poster image
+      // - The movie title
+      // - onclick="showMoviePopup(i)" where i is the index
+
+      // TODO: Set the innerHTML of .movies-gallery to your generated HTML
+
+      /* ========================================
+              EXERCISE 2: SHOW MOVIE POPUP FUNCTION
+              Complete this function
+              ======================================== */
+      function showMoviePopup(index) {
+        // TODO: Get the movie object from the array using the index
+        // TODO: Set the popup poster src
+        // TODO: Set the popup title innerHTML
+        // TODO: Set the popup year innerHTML (e.g., "Released: 2008")
+        // TODO: Set the popup description innerHTML
+        // TODO: Add 'show' class to popup overlay to make it visible
+        let item = movies[itemIndex];
+      }
+
+      /* ========================================
+              CLOSE POPUP - PROVIDED (DO NOT MODIFY)
+              ======================================== */
+      function closePopup() {
+        document.querySelector('.popup-overlay').classList.remove('show');
+      }
+    </script>
+  </body>
+</html>
