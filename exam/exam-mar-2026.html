@@ -322,7 +322,7 @@
                 >
                   View Details
                 </button>
-                <button onclick="toastFavs()" class="btn btn-outline-danger">
+                <button onclick="toastFavs(${anime.id})" class="btn btn-outline-danger">
                 <i class="bi bi-heart"></i>
                 </button>
               </div>
@@ -350,15 +350,19 @@
           currentAnime.episodes;
       }
 
-      // favourites button
+      // fill the heart icon of the item in the grid
       function favouritesIcon() {
         let btn = document.querySelector('.favouritesBtn');
-        
+
         btn.classList.remove('bi-heart');
         btn.classList.add('bi-heart-fill');
       }
 
-      function toastFavs() {
+      let favorites = [];
+
+      function toastFavs(id) {
+        favorites.push(id);
+
         document.getElementById('toastMessage').innerText =
           'Added to favorites!';
 
@@ -367,6 +371,43 @@
         );
 
         toast.show();
+
+        // update favourites
+
+        updateFavorites();
+      }
+
+      function updateFavorites() {
+        let list = document.getElementById('favoritesList');
+
+        if (favorites.length === 0) {
+          list.innerHTML = `<p class="text-muted">No favorites yet</p>`;
+          document.getElementById('favoritesBadge').innerText = 0;
+          return;
+        }
+
+        let html = '';
+
+        for (let i = 0; i < favorites.length; i++) {
+          let id = favorites[i];
+
+          let anime = animeList.find(function (item) {
+            return item.id === id;
+          });
+
+          html += `
+      <div class="d-flex align-items-center mb-3">
+        <img src="${anime.image}" width="50" class="rounded me-2">
+        <div>
+          <h6 class="mb-0">${anime.title}</h6>
+          <small class="text-muted">${anime.genre}</small>
+        </div>
+      </div>
+    `;
+        }
+
+        list.innerHTML = html;
+        document.getElementById('favoritesBadge').innerText = favorites.length;
       }
     </script>
   </body>
