@@ -391,9 +391,13 @@
         for (let i = 0; i < favorites.length; i++) {
           let id = favorites[i];
 
-          let anime = animeList.find(function (item) {
-            return item.id === id;
-          });
+          let anime = null;
+
+          for (let i = 0; i < animeList.length; i++) {
+            if (animeList[i].id === id) {
+              anime = animeList[i];
+            }
+          }
 
           html += `
       <div class="d-flex align-items-center mb-3">
