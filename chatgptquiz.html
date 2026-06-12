@@ -1,0 +1,40 @@
+<script>
+
+
+function reverseString(string) {
+    let reversed = "";
+    for (let i = string.length - 1; i >= 0; i--) {
+        reversed += string[i];
+    }
+    return reversed;
+}
+
+console.log(reverseString("hello"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // number % 2 === 0 
+
+  function sumEvens(numbers) {
+      let total = 0;
+      for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] % 2 === 0) {
+              total += numbers[i];
+          }
+      }
+      return total;
+  }
+
+  console.log(sumEvens([1, 2, 3, 4, 5]));
+</script>

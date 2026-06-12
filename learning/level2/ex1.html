@@ -16,7 +16,7 @@
               </p>
               <form
                 class="row g-3 align-items-center"
-                onsubmit="event.preventDefault(); handleClick();"
+                onsubmit="event.preventDefault(); calculate();"
               >
                 <div class="col-auto">
                   <label for="num" class="col-form-label">Number:</label>
@@ -35,7 +35,7 @@
                   </button>
                 </div>
               </form>
-              <div class="result mt-4 fw-bold" id="result">Result: 20</div>
+              <div class="result mt-4 fw-bold" id="result"></div>
             </div>
           </div>
         </div>
@@ -43,17 +43,11 @@
     </div>
 
     <script>
-      const result = document.querySelector('.result');
-
-      const calculate = (inputValue, b = 10) => {
-        const resultValue = Number(inputValue) * 2 + b;
-        result.innerHTML = `Result: ${resultValue}`;
+      const calculate = (bonus = 10) => {
+        const inputValue = Number(document.querySelector('#num').value);
+        const resultValue = inputValue * 2 + bonus;
+        document.querySelector('#result').innerHTML = `Result: ${resultValue}`;
       };
-
-      function handleClick() {
-        const inputValue = document.querySelector('#num').value;
-        calculate(inputValue);
-      }
     </script>
   </body>
 </html>
