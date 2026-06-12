@@ -96,7 +96,44 @@
 
     console.log(gradedStudents);
 
-    // make theeeeeeeeee table bruh
-    gradedStudents.forEach();
+    function renderScoreboard() {
+      // make theeeeeeeeee table bruh
+      const resultDiv = document.querySelector('#result');
+      let tableBody = '';
+
+      gradedStudents.forEach((currentItem, index) => {
+        let passedMessage = currentItem.passed ? 'Yes' : 'No';
+
+        tableBody =
+          tableBody +
+          `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${currentItem.name}</td>
+              <td>${currentItem.score}</td>
+              <td>${currentItem.grade}</td>
+              <td>${passedMessage}</td>
+              <td>${currentItem.message}</td>
+            </tr>
+          `;
+      });
+
+      const table = `
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Passed</th>
+            <th scope="col">Message</th>
+          </tr>
+          <tbody>${tableBody}</tbody>
+        </thead>
+        
+      </table>`;
+      resultDiv.innerHTML = table;
+    }
   </script>
 </html>
