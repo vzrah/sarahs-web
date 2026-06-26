@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>JS Level 2 - Item 6: Product Discount Viewer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-light py-5">
+    <div class="container">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="h3 mb-3">
+            <i class="bi bi-tags"></i> Product Discount Viewer
+          </h1>
+          <p class="text-muted">
+            Use <code>map</code> to calculate final price, then
+            <code>filter</code> by minimum final price.
+          </p>
+
+          <div class="row g-2 mb-3">
+            <div class="col-sm-4">
+              <input
+                id="min-price"
+                type="number"
+                class="form-control"
+                value="20"
+              />
+            </div>
+            <div class="col-sm-8 d-flex gap-2">
+              <button class="btn btn-primary" onclick="showProducts()">
+                Show Products
+              </button>
+              <button
+                class="btn btn-outline-secondary"
+                onclick="resetProducts()"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div id="output" class="row g-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const products = [
+        { name: 'Jordans', price: 120, discountPercent: 10 },
+        { name: 'Model Car', price: 65, discountPercent: 15 },
+        { name: 'Water Bottle', price: 18, discountPercent: 5 },
+        { name: 'Tennis Ball', price: 8, discountPercent: 20 },
+        { name: 'Keyboard', price: 42, discountPercent: 12 },
+      ];
+
+      function showProducts() {
+        const minPrice = Number(document.getElementById('min-price').value);
+
+        const discountedProducts = products.map((product) => {
+          const savedAmount = (product.price * product.discountPercent) / 100;
+          const finalPrice = product.price - savedAmount;
+
+          return {
+            name: product.name,
+            price: product.price,
+            discountPercent: product.discountPercent,
+            savedAmount,
+            finalPrice,
+          };
+        });
+
+        const output = document.getElementById('output');
+        output.innerHTML = '';
+
+        discountedProducts.forEach((product) => {
+          output.innerHTML += `
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="card-text mb-1">Price: $${product.price.toFixed(2)}</p>
+                  <p class="card-text mb-1">Discount: ${product.discountPercent}%</p>
+                  <p class="card-text mb-1">Saved: $${product.savedAmount.toFixed(2)}</p>
+                  <p class="card-text fw-bold">Final Price: $${product.finalPrice.toFixed(2)}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      function resetProducts() {
+        document.getElementById('output').innerHTML = '';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Exercise 5</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-light py-5">
+    <div class="container">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="h3 mb-3">
+            <i class="bi bi-clipboard-data"></i> Student Quick Report
+          </h1>
+          <p class="text-muted">
+            Practice <code>map</code>, <code>filter</code>,
+            <code>forEach</code>, <code>const</code>, and default arguments.
+          </p>
+
+          <div class="row g-2 mb-3">
+            <div class="col-sm-4">
+              <input
+                id="passing-score"
+                class="form-control"
+                type="number"
+                value="60"
+              />
+            </div>
+            <div class="col-sm-8 d-flex gap-2">
+              <button class="btn btn-primary" onclick="buildReport()">
+                Build Report
+              </button>
+              <button class="btn btn-success" onclick="showPassedOnly()">
+                Show Passed Only
+              </button>
+              <button class="btn btn-outline-secondary" onclick="resetView()">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div id="summary" class="mb-3"></div>
+          <div id="output"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function getPassingMark() {
+        return Number(document.querySelector('#passing-score').value);
+      }
+
+      // create array (firstname, lastname, score)
+      const students = [
+        { firstName: 'Lina', lastName: 'Chan', score: 92 },
+        { firstName: 'Tom', lastName: 'Lee', score: 58 },
+        { firstName: 'Sokha', lastName: 'Phan', score: 76 },
+        { firstName: 'Nita', lastName: 'Kim', score: 64 },
+        { firstName: 'Dara', lastName: 'Sok', score: 48 },
+      ];
+
+      // make grading system
+      function getGrade(score) {
+        if (score >= 90) {
+          return 'A';
+        } else if (score >= 80) {
+          return 'B';
+        } else if (score >= 70) {
+          return 'C';
+        } else if (score >= 60) {
+          return 'D';
+        } else {
+          return 'F';
+        }
+      }
+
+      // make passed boolean
+      function passTest(score) {
+        return score >= getPassingMark();
+      }
+
+      // make message/badge
+      function getMessage(passed) {
+        if (passed === true) {
+          return 'Good Job! Keep it up.';
+        } else {
+          return 'Keep trying.';
+        }
+      }
+
+      function getGradedStudents() {
+        return students.map((currentItem) => {
+          const grade = getGrade(currentItem.score);
+          const passed = passTest(currentItem.score);
+          const message = getMessage(passed);
+          const fullName = `${currentItem.firstName} ${currentItem.lastName}`;
+
+          return {
+            name: fullName,
+            score: currentItem.score,
+            grade: grade,
+            passed: passed,
+            message: message,
+          };
+        });
+      }
+
+      function buildReport() {
+        const tableContainer = document.querySelector('#output');
+        let tableContents = '';
+        const gradedStudents = getGradedStudents();
+
+        gradedStudents.forEach((currentItem, index) => {
+          const passedMessage = currentItem.passed ? 'Passed' : 'Failed';
+
+          tableContents += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${currentItem.name}</td>
+              <td>${currentItem.score}</td>
+              <td>${currentItem.grade}</td>
+              <td>${passedMessage}</td>
+              <td>${currentItem.message}</td>
+            </tr>
+          `;
+        });
+
+        tableContainer.innerHTML = `
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Passed</th>
+            <th scope="col">Badge</th>
+          </tr>
+        </thead>
+        <tbody>${tableContents}</tbody>
+      </table>`;
+      }
+
+      function showPassedOnly() {
+        const tableContainer = document.querySelector('#output');
+        const passedStudents = getGradedStudents().filter(
+          (student) => student.passed,
+        );
+        let tableContents = '';
+
+        if (passedStudents.length === 0) {
+          tableContainer.innerHTML =
+            '<p class="text-muted">No students passed the selected score.</p>';
+          return;
+        }
+
+        passedStudents.forEach((currentItem, index) => {
+          tableContents += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${currentItem.name}</td>
+              <td>${currentItem.score}</td>
+              <td>${currentItem.grade}</td>
+              <td>${currentItem.passed ? 'Passed' : 'Failed'}</td>
+              <td>${currentItem.message}</td>
+            </tr>
+          `;
+        });
+
+        tableContainer.innerHTML = `
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Passed</th>
+            <th scope="col">Badge</th>
+          </tr>
+        </thead>
+        <tbody>${tableContents}</tbody>
+      </table>`;
+      }
+
+      function resetView() {
+        document.querySelector('#output').innerHTML = '';
+      }
+    </script>
+  </body>
+</html>
