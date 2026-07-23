@@ -1,0 +1,83 @@
+// ==UserScript==
+// @name         Roblox Profile Bio Corner Text
+// @namespace    http://tampermonkey.net
+// @version      1.7
+// @description  Forces custom bio text to appear at the absolute front of the Roblox thumbnail container
+// @author       You
+// @match        https://www.roblox.com/users/3467711374/profile
+// @grant        none
+// @run-at       document-end
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // 1. Inject styling parameters to stack the text over every possible element layer
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Ensure the avatar parent container allows proper coordinate mapping */
+        .thumbnail-holder.thumbnail-holder-position {
+            position: relative !important;
+        }
+
+        /* Create a zero-size anchor container at the absolute front */
+        .aboutTextContainer {
+            position: absolute !important;
+            top: 10px !important;
+            right: 10px !important;
+
+            /* Maximum allowed 32-bit integer z-index to stay above ALL overlays */
+            z-index: 2147483647 !important;
+            pointer-events: none !important; /* Clicks pass straight through to the avatar */
+
+            /* Completely strip structural footprint */
+            width: 0 !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+        }
+
+        /* Style the actual visual text badge */
+        .aboutTextContainer::after {
+
+
+            position: absolute !important;
+            right: 0 !important;
+            top: 0 !important;
+
+            /* Text Design Parameters */
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffffff; /* High contrast text */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Readable on light backgrounds */
+            background: rgba(0, 0, 0, 0.65); /* Dark background chip */
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap; /* Prevents sentence splitting lines */
+        }
+    `;
+    document.head.appendChild(style);
+
+    // 2. Monitoring logic script tracking layout loads inside the document
+    function injectBioSection() {
+        const targetElement = document.querySelector('.thumbnail-holder.thumbnail-holder-position');
+
+        // Check if target is loaded and ensure text isn't already appended
+        if (targetElement && !document.querySelector('.aboutTextContainer')) {
+
+            const robloxBioSection = document.createElement('div');
+            robloxBioSection.classList.add('aboutTextContainer');
+
+            // Insert as a direct sibling immediately after the element to avoid image clipping
+            targetElement.insertAdjacentElement('afterend', robloxBioSection);
+
+            // Turn off the loops once rendering succeeds
+            clearInterval(checkExist);
+        }
+    }
+
+    // 3. Scan the page layout tree cycles for dynamic element generation frames
+    const checkExist = setInterval(injectBioSection, 500);
+
+})();
