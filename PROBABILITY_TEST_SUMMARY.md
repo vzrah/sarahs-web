@@ -117,6 +117,165 @@ P(exactly 1 red) = 3 × (3/12 × 9/11 × 8/10) = 9/22
 
 ---
 
+## 🔵 VENN DIAGRAM SHADING - UNION & INTERSECTION ONLY
+
+**YOU ONLY NEED TO KNOW TWO SYMBOLS. Everything else is combinations of these.**
+
+### THE TWO RULES
+
+#### ∪ = **Union** = **OR** = **Everything in either/both circles**
+
+**Shade:** ALL of A and ALL of B
+
+```
+A ∪ B = Both circles completely shaded
+(###)(###)
+ \###/
+```
+
+---
+
+#### ∩ = **Intersection** = **AND** = **The overlap only**
+
+**Shade:** ONLY the MIDDLE (where A and B cross)
+
+```
+A ∩ B = Just the middle part
+( )( )
+ \###/
+```
+
+---
+
+## 🎯 COMBINATIONS TO MEMORIZE
+
+### A' ∪ B = **NOT A, union with B**
+
+**Think:** Everything that's NOT A, PLUS everything in B
+
+**Shade:**
+
+- Outside the A circle (including outside both)
+- PLUS all of B
+
+```
+Basically: Everything EXCEPT the A-only part
+(   )(###)
+\###\###/
+ \#######/
+```
+
+---
+
+### (A ∪ B)' = **NOT (A or B)** = **Neither A nor B**
+
+**Think:** The opposite of union. Everything outside both circles.
+
+**Shade:** Only the area OUTSIDE both circles
+
+```
+Only the empty space around
+( )( )
+###
+(outside area)
+```
+
+---
+
+### A' ∩ B = **NOT A, AND with B**
+
+**Think:** Stuff that's in B but NOT in A
+
+**Shade:** Only the B-only part (not the overlap, not A)
+
+```
+Just B's side, not the middle
+( )(###)
+  \ /
+```
+
+---
+
+### (A ∩ B)' = **NOT (A and B)** = **Everything EXCEPT the overlap**
+
+**Think:** Shade everything except where they meet
+
+**Shade:**
+
+- A-only part
+- B-only part
+- Outside both circles
+- NOT the middle
+
+```
+Everything BUT the middle
+(###)(###)
+ \   /
+(###)
+```
+
+---
+
+### A' ∩ B' = **NOT A, AND NOT B** = **Neither**
+
+**Think:** Nothing in A, nothing in B
+
+**Shade:** Only OUTSIDE both circles
+
+```
+Same as (A ∪ B)'
+Just the outside
+###
+( )( )
+###
+```
+
+---
+
+### A' ∪ B' = **NOT A, OR NOT B** = **Not both**
+
+**Think:** Either not in A, or not in B (or both)
+
+**Shade:**
+
+- Everything except A only
+- OR everything except B only
+- Basically: A-only + outside + B-only
+
+```
+Everything EXCEPT the overlap
+(###)(###)
+ \   /
+(###)
+```
+
+---
+
+## 💡 QUICK MEMORY SYSTEM
+
+**Remember these mental pictures:**
+
+| Operation | Picture               | What You Shade                 |
+| --------- | --------------------- | ------------------------------ |
+| A ∪ B     | Both circles          | **All** of both                |
+| A ∩ B     | Tunnel/Cross          | **Middle only**                |
+| A' ∪ B    | All + right           | Not-A + all of B               |
+| (A ∪ B)'  | Outside               | **Outside only**               |
+| A' ∩ B    | Right side            | B but not A                    |
+| (A ∩ B)'  | Everything but middle | **Not the overlap**            |
+| A' ∩ B'   | Outside only          | **Outside only** (same as top) |
+| A' ∪ B'   | Everything but middle | **Not both** (same as row 6)   |
+
+---
+
+## 🎓 THE PATTERN
+
+**With ∪ (Union/OR):** Add regions together
+**With ∩ (Intersection/AND):** Find what's in BOTH
+**With ' (Complement/NOT):** Flip it (shade the opposite)
+
+---
+
 ## 🎓 KEY CONCEPTS TO LOCK IN
 
 ### 1. **Without Replacement**
